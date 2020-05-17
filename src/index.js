@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
+import theme from './config/theme'
 import * as serviceWorker from './service/serviceWorker/serviceWorker';
-import Home from './modules/home';
 import { ApplicationRouter } from './infrastructure/router';
+import { ThemeProvider } from 'styled-components';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApplicationRouter />
+    <ThemeProvider theme={theme}>
+      <ApplicationRouter />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
