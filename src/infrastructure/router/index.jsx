@@ -10,7 +10,7 @@ export function ApplicationRouter() {
     <BrowserRouter>
       <Switch>
         <Route path='/login' component={Login} />
-        <Route path='/login' component={Register} />
+        <Route path='/register' component={Register} />
         <Route path='/' component={Home} />
       </Switch>
     </BrowserRouter>
