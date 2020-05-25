@@ -6,12 +6,16 @@ import theme from './config/theme'
 import * as serviceWorker from './service/serviceWorker/serviceWorker';
 import { ApplicationRouter } from './infrastructure/router';
 import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+import { store } from './infrastructure/redux';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <ApplicationRouter />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <ApplicationRouter />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
