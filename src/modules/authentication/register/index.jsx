@@ -1,5 +1,6 @@
 import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 
 import userRegistrationStartAsync from "./redux/actions";
 import {
@@ -7,10 +8,12 @@ import {
   Form,
   FormContainer,
   RegisterInput,
+  RegisterLink,
   RegisterBody,
 } from "./styles";
 import { Heading } from "../../shared/components/typography";
 import Button from "../../shared/components/button/index";
+import isLoggedIn from "../../../helper/isLoggedIn";
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +31,9 @@ class Register extends Component {
     this.props.createUser({ email, name, username, password });
   };
   render() {
+    if (isLoggedIn()) {
+      return <Redirect to='/' />;
+    }
     return (
       <RegisterContainer>
         <FormContainer>
@@ -47,6 +53,7 @@ class Register extends Component {
               type='password'
               placeholder='Password'
             />
+            <RegisterLink to='/login'>Already Have Account?</RegisterLink>
             <Button>Sign Up</Button>
           </Form>
         </FormContainer>

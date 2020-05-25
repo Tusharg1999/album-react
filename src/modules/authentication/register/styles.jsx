@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import Input from "../../shared/components/input/index";
 import { SubTitle } from "../../shared/components/typography";
+import { Link } from "react-router-dom";
 
 const RegisterContainer = styled.div`
   display: flex;
@@ -33,4 +34,20 @@ const RegisterBody = styled(SubTitle)`
 const RegisterInput = styled(Input)`
   margin-bottom: 0.9rem;
 `;
-export { RegisterContainer, FormContainer, Form, RegisterBody, RegisterInput };
+
+const RegisterLink = styled(Link)`
+  text-decoration: none;
+  ${({ theme }) => css`
+    color: ${theme.primary.main};
+    padding-bottom: 10px;
+    cursor: pointer;
+  `}
+`;
+export {
+  RegisterContainer,
+  FormContainer,
+  Form,
+  RegisterBody,
+  RegisterInput,
+  RegisterLink,
+};

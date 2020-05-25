@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import Input from "../../shared/components/input/index";
 import { SubTitle } from "../../shared/components/typography";
+import { Link } from "react-router-dom";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -33,4 +34,19 @@ const LoginBody = styled(SubTitle)`
 const LoginInput = styled(Input)`
   margin-bottom: 0.9rem;
 `;
-export { LoginContainer, FormContainer, Form, LoginBody, LoginInput };
+const LoginLink = styled(Link)`
+  text-decoration: none;
+  ${({ theme }) => css`
+    color: ${theme.primary.main};
+    padding-bottom: 10px;
+    cursor: pointer;
+  `}
+`;
+export {
+  LoginContainer,
+  FormContainer,
+  Form,
+  LoginBody,
+  LoginInput,
+  LoginLink,
+};
