@@ -2,6 +2,7 @@ import loginTypes from './types'
 import axiosInstance from '../../../../config/axios/index';
 import setUserAction from '../../../shared/redux/actions';
 import { debugLog } from '../../../../utils/logger/index'
+import setUser from '../../../../helper/localStorage/setUser';
 
 function userLoginStart() {
     return {
@@ -26,6 +27,7 @@ function userLoginStartAsync(credentials, history) {
             const response = await axiosInstance.post("/login", { ...credentials })
             debugLog(response)
             dispatch(setUserAction(response.data.token))
+            setUser(response.data.token)
             dispatch(userLoginSuccess(response.data.msg))
             history.push('/');
         } catch (e) {
