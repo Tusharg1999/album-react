@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
+import theme from './config/theme'
 import * as serviceWorker from './service/serviceWorker/serviceWorker';
-import Home from './modules/home/home';
+import { ApplicationRouter } from './infrastructure/router';
+import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+import { store } from './infrastructure/redux';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <ApplicationRouter />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
